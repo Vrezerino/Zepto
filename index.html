@@ -133,10 +133,10 @@
 			if (input.value.length < 51 && input.value.length > 0) {
 				try {
 					socket.emit('chat message', input.value);
+					input.value = '';
 				} catch (error) {
 					console.log('Dang');
 				}
-				input.value = '';
 			} else {
 				//
 			}
