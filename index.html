@@ -100,7 +100,7 @@
 
 		const colors = ['red', 'yellow', 'green', 'azure', 'purple', 'white', 'blue', 'orange']
 		let randomColor = colors[Math.floor(Math.random() * 8)];
-		const badwords = ['http://', 'https://', 'ftp://', 'spotify:'];
+		const badwords = ['http://', 'https://', 'ftp://', 'spotify:', 'nigger', 'kike', 'gook', 'chink', 'tranny'];
 		const passesFilter = msg => !badwords.some(badword => msg.toLowerCase().includes(badword));
 
 		form.addEventListener('submit', function (e) {
