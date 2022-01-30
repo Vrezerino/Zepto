@@ -4,18 +4,21 @@
 <head>
 	<title>Zepto</title>
 	<style>
-		@import url('https://fonts.googleapis.com/css2?family=Play&display=swap');
+		@import url('https://fonts.googleapis.com/css2?family=Niconne&family=Play&display=swap');
 	</style>
 	<style>
-		body,
-		form,
+		@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,100;1,200&family=Niconne&family=Play&display=swap');
+	</style>
+	<style>
 		input,
 		form>button {
-			font-family: 'Play', sans-serif;
+			font-family: 'Montserrat', sans-serif;
 		}
 
 		body {
-			background-color: black;
+			background-image: url('https://i.imgur.com/z7LBUoE.jpg');
+			background-color: #155494;
+			background-size: cover;
 			margin: 0;
 			padding-bottom: 3rem;
 		}
@@ -67,7 +70,6 @@
 
 		#message>li {
 			word-break: break-all;
-			padding: 0.5rem 0.5rem;
 			font-size: 10vw;
 			margin: 0;
 			position: absolute;
@@ -75,11 +77,36 @@
 			left: 50%;
 			-ms-transform: translate(-50%, -50%);
 			transform: translate(-50%, -50%);
+			font-size: 8rem;
+			height: 90vh;
+			line-height: 0.8em;
+			color: #fcedd8;
+			font-family: 'Niconne', cursive;
+			font-weight: 700;
+			text-shadow: 5px 5px 0px #eb452b,
+				10px 10px 0px #efa032,
+				15px 15px 0px #46b59b,
+				20px 20px 0px #017e7f,
+				25px 25px 0px #052939
+		}
+
+		p {
+			text-align: center;
+			font-family: "Helvetica";
+			font-size: 0.8rem;
+		}
+
+		a {
+			color: #d52e3f;
+			text-decoration: none;
+			font-family: 'Niconne', cursive;
+			font-size: 1.2rem;
+
 		}
 
 		@media only screen and (min-width: 1200px) {
 			#message>li {
-				font-size: 7em;
+				font-size: 9em;
 			}
 		}
 	</style>
@@ -90,7 +117,7 @@
 		<li id='msgLi'>&nbsp;</li>
 	</ul>
 	<form id="form" action="">
-		<input id="input" autocomplete="off" placeholder='Write your message (maximum length 60 characters)' />
+		<input id="input" autocomplete="off" placeholder='Write message (max length 30)' />
 		<button>Go!</button>
 	</form>
 	<script src="/socket.io/socket.io.js"></script>
@@ -102,22 +129,24 @@
 		const input = document.getElementById('input');
 		let msgLi = document.getElementById('msgLi')
 
-		const colors = ['red', 'yellow', 'green', 'azure', 'purple', 'white', 'blue', 'orange']
-		let randomColor = colors[Math.floor(Math.random() * 8)];
+		const colors = ['#fff6e6', '#fdffe6', '#e6ffec', '#e6faff', 'white', '#fff2fe', '#f2f4ff']
+		let randomColor = colors[Math.floor(Math.random() * 7)];
+
 		const badwords = ['http://', 'https://', 'ftp://'];
 		const passesFilter = msg => !badwords.some(badword => msg.toLowerCase().includes(badword));
 
 		form.addEventListener('submit', function (e) {
 			e.preventDefault();
-			if (input.value.length < 61 && input.value.length > 0 && passesFilter(input.value)) {
-				socket.emit('chat message', input.value);
+			let sanitizedMsg = input.value.replace('/^[a-z0-9]+$/i', '\\$&');
+			if (sanitizedMsg.length < 31 && sanitizedMsg.length > 0 && passesFilter(sanitizedMsg)) {
+				socket.emit('chat message', sanitizedMsg);
 				input.value = '';
 			} else {
 				//
 			}
 		});
 
-		socket.on('chat message', function (msg) {
+		socket.on('chat message', msg => {
 			const item = document.createElement('li');
 			item.setAttribute('id', 'msgLi');
 			item.setAttribute('style', `color: ${randomColor}`)
@@ -125,7 +154,7 @@
 
 			msgLi.parentNode.replaceChild(item, msgLi);
 			msgLi = document.getElementById('msgLi')
-			randomColor = colors[Math.floor(Math.random() * 8)]
+			randomColor = colors[Math.floor(Math.random() * 7)]
 			window.scrollTo(0, document.body.scrollHeight);
 		});
 	</script>
