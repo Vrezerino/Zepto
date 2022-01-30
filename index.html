@@ -100,10 +100,12 @@
 
 		const colors = ['red', 'yellow', 'green', 'azure', 'purple', 'white', 'blue', 'orange']
 		let randomColor = colors[Math.floor(Math.random() * 8)];
+		const badwords = ['http://', 'https://', 'ftp://', 'spotify:'];
+		const passesFilter = msg => !badwords.some(badword => msg.toLowerCase().includes(badword));
 
 		form.addEventListener('submit', function (e) {
 			e.preventDefault();
-			if (input.value.length < 61) {
+			if (input.value.length < 61 && passesFilter(input.value)) {
 				socket.emit('chat message', input.value);
 				input.value = '';
 			} else {
