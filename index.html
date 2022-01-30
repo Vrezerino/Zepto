@@ -113,7 +113,7 @@
 		<li id='msgLi'>&nbsp;</li>
 	</ul>
 	<form id="form" action="">
-		<input id="input" autocomplete="off" placeholder='Write message (max length 30)' />
+		<input id="input" autocomplete="off" placeholder='Write message (max length 50)' />
 		<button>Go!</button>
 	</form>
 	<script src="/socket.io/socket.io.js"></script>
@@ -128,14 +128,14 @@
 		const colors = ['#ffdbd9', '#fff0d9', '#f7ffd9', '#daffd9', '#d9fff4', '#d9efff', '#dfd9ff', '#f2d9ff', 'white']
 		let randomColor = colors[Math.floor(Math.random() * 9)];
 
-		const badwords = ['http://', 'https://', 'ftp://'];
-		const passesFilter = msg => !badwords.some(badword => msg.toLowerCase().includes(badword));
-
 		form.addEventListener('submit', function (e) {
 			e.preventDefault();
-			let sanitizedMsg = input.value.replace('/^[a-z0-9]+$/i', '\\$&');
-			if (sanitizedMsg.length < 31 && sanitizedMsg.length > 0 && passesFilter(sanitizedMsg)) {
-				socket.emit('chat message', sanitizedMsg);
+			if (input.value.length < 51 && input.value.length > 0) {
+				try {
+					socket.emit('chat message', input.value);
+				} catch (error) {
+					console.log('Dang');
+				}
 				input.value = '';
 			} else {
 				//
