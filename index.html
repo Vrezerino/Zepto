@@ -7,9 +7,13 @@
 		@import url('https://fonts.googleapis.com/css2?family=Play&display=swap');
 	</style>
 	<style>
-		body, form, input, form>button {
+		body,
+		form,
+		input,
+		form>button {
 			font-family: 'Play', sans-serif;
 		}
+
 		body {
 			background-color: black;
 			margin: 0;
@@ -89,6 +93,10 @@
 		<input id="input" autocomplete="off" placeholder='Write your message (maximum length 60 characters)' />
 		<button>Go!</button>
 	</form>
+	<footer>
+		<hr />
+		by <a href='https://github.com/Vrezerino' target='_blank'>Patrick Park</a>F
+	</footer>
 	<script src="/socket.io/socket.io.js"></script>
 
 	<script>
@@ -100,7 +108,7 @@
 
 		const colors = ['red', 'yellow', 'green', 'azure', 'purple', 'white', 'blue', 'orange']
 		let randomColor = colors[Math.floor(Math.random() * 8)];
-		const badwords = ['http://', 'https://', 'ftp://', 'spotify:', 'nigger', 'kike', 'gook', 'chink', 'tranny'];
+		const badwords = ['http://', 'https://', 'ftp://'];
 		const passesFilter = msg => !badwords.some(badword => msg.toLowerCase().includes(badword));
 
 		form.addEventListener('submit', function (e) {
