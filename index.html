@@ -129,8 +129,8 @@
 		const input = document.getElementById('input');
 		let msgLi = document.getElementById('msgLi')
 
-		const colors = ['#fff6e6', '#fdffe6', '#e6ffec', '#e6faff', 'white', '#fff2fe', '#f2f4ff']
-		let randomColor = colors[Math.floor(Math.random() * 7)];
+		const colors = ['#ffdbd9', '#fff0d9', '#f7ffd9', '#daffd9', '#d9fff4', '#d9efff', '#dfd9ff', '#f2d9ff', 'white']
+		let randomColor = colors[Math.floor(Math.random() * 9)];
 
 		const badwords = ['http://', 'https://', 'ftp://'];
 		const passesFilter = msg => !badwords.some(badword => msg.toLowerCase().includes(badword));
@@ -154,7 +154,7 @@
 
 			msgLi.parentNode.replaceChild(item, msgLi);
 			msgLi = document.getElementById('msgLi')
-			randomColor = colors[Math.floor(Math.random() * 7)]
+			randomColor = colors[Math.floor(Math.random() * 9)]
 			window.scrollTo(0, document.body.scrollHeight);
 		});
 	</script>
