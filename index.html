@@ -124,6 +124,9 @@
 	<script src="/socket.io/socket.io.js"></script>
 
 	<script>
+		window.onbeforeunload = () => {
+  		window.scrollTo(0, 0);
+		}
 		const socket = io();
 
 		const form = document.getElementById('form');
