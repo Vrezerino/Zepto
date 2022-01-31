@@ -1,15 +1,14 @@
 {
-  "name": "Socket-Chat-Example",
-  "description": "my first socket.io app",
-  "website": "https://github.com/socketio/chat-example",
+  "name": "Zepto",
+  "description": "zepto",
+  "website": "https://github.com/Vrezerino/Zepto",
   "repository": "https://github.com/socketio/chat-example",
-  "logo": "https://node-js-sample.herokuapp.com/node.svg",
   "success_url": "/",
   "keywords": [
-    "node",
-    "express",
-    "socket.io",
-    "realtime",
+    "zepto",
+    "chat",
+    "message",
+    "messaging",
     "websocket"
   ],
   "scripts": {
