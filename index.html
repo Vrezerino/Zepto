@@ -133,7 +133,7 @@
 		const colors = ['#ffdbd9', '#fff0d9', '#f7ffd9', '#daffd9', '#d9fff4', '#d9efff', '#dfd9ff', '#f2d9ff', 'white']
 		let randomColor = colors[Math.floor(Math.random() * 9)];
 
-		form.addEventListener('submit', function (e) {
+		form.addEventListener('submit', e => {
 			e.preventDefault();
 			if (input.value.length < 51 && input.value.length > 0) {
 				try {
