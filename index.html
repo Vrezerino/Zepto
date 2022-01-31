@@ -27,6 +27,10 @@
 			padding-bottom: 3rem;
 		}
 
+		.msgForm {
+			position: fixed;
+		}
+
 		#form {
 			background: rgba(0, 0, 0, 0.15);
 			padding: 0.25rem;
@@ -117,10 +121,12 @@
 	<ul id="message">
 		<li id='msgLi'>&nbsp;</li>
 	</ul>
-	<form id="form" action="">
-		<input id="input" autocomplete="off" placeholder='Write message (max length 50)' />
-		<button>Go!</button>
-	</form>
+	<div class='msgForm'>
+		<form id="form" action="">
+			<input id="input" autocomplete="off" placeholder='Write message (max length 50)' />
+			<button>Go!</button>
+		</form>
+	</div>
 	<script src="/socket.io/socket.io.js"></script>
 
 	<script>
