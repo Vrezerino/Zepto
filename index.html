@@ -10,8 +10,7 @@
 		@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,100;1,200&family=Niconne&family=Play&display=swap');
 	</style>
 	<style>
-		input,
-		form>button {
+		.header, a, input, form>button {
 			font-family: 'Montserrat', sans-serif;
 			font-weight: 700;
 		}
@@ -87,18 +86,16 @@
 				25px 25px 0px #052939
 		}
 
-		p {
+		.header {
+			color: white;
+			font-weight: 400;
 			text-align: center;
-			font-family: "Helvetica";
-			font-size: 0.8rem;
 		}
 
 		a {
-			color: #d52e3f;
-			text-decoration: none;
-			font-family: 'Niconne', cursive;
-			font-size: 1.2rem;
-
+			color: white;
+			font-weight: 400;
+			text-decoration: underline;
 		}
 
 		@media only screen and (min-width: 1200px) {
@@ -110,6 +107,9 @@
 </head>
 
 <body>
+	<div class='header'>
+		Created by <a href='https://github.com/Vrezerino' target='_blank'>Patrick Park</a>
+	</div>
 	<ul id="message">
 		<li id='msgLi'>&nbsp;</li>
 	</ul>
