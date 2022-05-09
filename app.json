@@ -1,8 +1,8 @@
 {
   "name": "Zepto",
   "description": "zepto",
-  "website": "https://github.com/Vrezerino/Zepto",
-  "repository": "https://github.com/socketio/chat-example",
+  "website": "https://www.zepto.fi",
+  "repository": "https://github.com/Vrezerino/Zepto",
   "success_url": "/",
   "keywords": [
     "zepto",
